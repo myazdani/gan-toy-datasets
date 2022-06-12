@@ -38,7 +38,7 @@ class GAN:
         fake_samples = fakes.detach().numpy()
         df_fake_samples = pd.DataFrame(fake_samples, columns=["x", "y"])
         df_fake_samples["exp_name"] = exp_name
-        df_fake_samples.to_csv(exp_name + "_fake_samples_" + ".csv", index=None)
+        df_fake_samples.to_csv(exp_name + "_fakes.csv", index=None)
         return fake_discs, real_discs
 
     def train(self, real_samples, nb_epochs, batch_size, exp_name="", save_rate=10):
@@ -68,7 +68,7 @@ class GAN:
             if epoch % save_rate == 0 or epoch == nb_epochs - 1:
                 print(epoch)
                 (fake_batch_discs, real_batch_discs) = self.eval_discriminator(
-                    real_batch, real_samples, exp_name = exp_name + "_" + str(epoch)
+                    real_batch, real_samples, exp_name = exp_name + ":" + str(epoch)
                 )
                 fake_discs.append(fake_batch_discs)
                 real_discs.append(real_batch_discs)

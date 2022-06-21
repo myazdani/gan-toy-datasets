@@ -66,7 +66,6 @@ class GAN:
             #   discriminate against a batch of real data
             # this is to save snapshot of GAN training throughout iterations
             if epoch % save_rate == 0 or epoch == nb_epochs - 1:
-                print(epoch)
                 (fake_batch_discs, real_batch_discs) = self.eval_discriminator(
                     real_batch, real_samples, exp_name = exp_name + ":" + str(epoch)
                 )

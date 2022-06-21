@@ -45,7 +45,7 @@ def run_experiment(
         )
 
         gan = GAN(dim=2, z_dim=z_dim, nb_hidden=nb_hidden, lr=lr)
-        real_samples = torch.from_numpy(dataset[0]).float()
+        real_samples = torch.from_numpy(dataset).float()
         fake_discs, real_discs = gan.train(
             real_samples,
             nb_epochs=nb_epochs,
